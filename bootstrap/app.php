@@ -9,7 +9,12 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
-    )
+    )->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'bendahara' => \App\Http\Middleware\Bendahara\Bendahara::class,
+            'redirect' => \App\Http\Middleware\RedirectUsertype::class,
+        ]);
+    })
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
