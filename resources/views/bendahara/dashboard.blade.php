@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard Bendahara') }}
-        </h2>
-    </x-slot>
+<x-bendahara-layout>
+    <div class="p-6">
+        <h1 class="text-2xl font-bold text-purple-700">Dashboard Bendahara</h1>
+        <p class="text-gray-600">Ringkasan Keuangan Bulan Ini</p>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div class="p-4 bg-purple-100 rounded-xl shadow">
+                <h2 class="text-lg font-semibold text-purple-800">Saldo Kas</h2>
+                <p class="mt-2 text-2xl font-bold text-purple-900">Rp {{ number_format($saldoKas, 0, ',', '.') }}</p>
+            </div>
+
+            <div class="p-4 bg-pink-100 rounded-xl shadow">
+                <h2 class="text-lg font-semibold text-pink-800">Pemasukan</h2>
+                <p class="mt-2 text-2xl font-bold text-pink-900">Rp {{ number_format($pemasukanBulanIni, 0, ',', '.') }}
+                </p>
+            </div>
+
+            <div class="p-4 bg-blue-100 rounded-xl shadow">
+                <h2 class="text-lg font-semibold text-blue-800">Pengeluaran</h2>
+                <p class="mt-2 text-2xl font-bold text-blue-900">Rp
+                    {{ number_format($pengeluaranBulanIni, 0, ',', '.') }}</p>
             </div>
         </div>
     </div>
-</x-app-layout>
+
+</x-bendahara-layout>
